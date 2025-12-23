@@ -79,4 +79,9 @@ plan:
             emulated-sender: ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM
             path: contracts/fundraising.clar
             clarity-version: 3
+        - emulated-contract-publish:
+            contract-name: streamcash
+            emulated-sender: ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM
+            path: contracts/streamcash.clar
+            clarity-version: 3
       epoch: "3.0"
