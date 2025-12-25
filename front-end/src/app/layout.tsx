@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Fundraising Campaign",
+  title: "StackMoney - Refining Automated Payments in Bitcoin",
   description:
-    "A crypto fundraising campaign accepting donations in STX & sBTC.",
+    "Stream, distribute, and fundraise with ease on the Stacks blockchain. Token distribution, streaming, emergency crowdfunding, and airdrops.",
 };
 
 export default function RootLayout({

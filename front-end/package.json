@@ -18,6 +18,8 @@
     "@stacks/transactions": "^7.0.2",
     "@stacks/wallet-sdk": "^7.0.4",
     "@tanstack/react-query": "^5.66.0",
+    "@walletconnect/sign-client": "^2.17.1",
+    "@walletconnect/modal": "^2.7.0",
     "next": "15.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
