@@ -36,10 +36,10 @@ export const ConnectWalletButton = (buttonProps: ConnectWalletButtonProps) => {
       <MenuButton
         as={Button}
         size="md"
-        bgGradient="linear(to-r, brand.500, brand.600)"
+        bg="brand.500"
         color="white"
         _hover={{
-          bgGradient: "linear(to-r, brand.600, brand.700)",
+          bg: "brand.600",
         }}
       >
         <Flex gap="2" align="center">
@@ -47,8 +47,8 @@ export const ConnectWalletButton = (buttonProps: ConnectWalletButtonProps) => {
           <Box>{formatStxAddress(currentWalletAddress || "")}</Box>
         </Flex>
       </MenuButton>
-      <MenuList bg="gray.800" borderColor="rgba(85, 70, 255, 0.2)">
-        <MenuItem onClick={disconnect} bg="transparent" _hover={{ bg: "gray.700" }}>
+      <MenuList bg="white" borderColor="rgba(255, 107, 0, 0.2)" boxShadow="lg">
+        <MenuItem onClick={disconnect} bg="transparent" _hover={{ bg: "gray.100" }} color="black">
           Disconnect Wallet
         </MenuItem>
       </MenuList>
@@ -58,12 +58,12 @@ export const ConnectWalletButton = (buttonProps: ConnectWalletButtonProps) => {
       size="md"
       onClick={authenticate}
       data-testid="wallet-connect-button"
-      bgGradient="linear(to-r, brand.500, brand.600)"
+      bg="brand.500"
       color="white"
       _hover={{
-        bgGradient: "linear(to-r, brand.600, brand.700)",
+        bg: "brand.600",
         transform: "translateY(-2px)",
-        boxShadow: "0 10px 25px rgba(85, 70, 255, 0.3)",
+        boxShadow: "0 10px 25px rgba(255, 107, 0, 0.3)",
       }}
       px={6}
       {...buttonProps}

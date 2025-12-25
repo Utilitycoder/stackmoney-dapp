@@ -2,25 +2,27 @@ import { extendTheme } from "@chakra-ui/react";
 
 const theme = extendTheme({
   config: {
-    initialColorMode: "dark",
+    initialColorMode: "light",
     useSystemColorMode: false,
   },
   colors: {
     brand: {
-      50: "#E8E6FF",
-      100: "#C4C0FF",
-      200: "#9B95FF",
-      300: "#726AFF",
-      400: "#5546FF",
-      500: "#5546FF", // Stacks primary purple/blue
-      600: "#4338E6",
-      700: "#3128CC",
-      800: "#1F1AB3",
-      900: "#0D0A99",
+      50: "#FFF4E6",
+      100: "#FFE0B3",
+      200: "#FFCC80",
+      300: "#FFB84D",
+      400: "#FFA41A",
+      500: "#FF6B00", // Stacks primary orange
+      600: "#E55A00",
+      700: "#CC4F00",
+      800: "#B24400",
+      900: "#993900",
     },
     stacks: {
-      primary: "#5546FF",
-      secondary: "#00D4FF",
+      primary: "#FF6B00", // Primary orange
+      secondary: "#FFD700", // Orange-yellow/gold accent
+      accent: "#FFA41A", // Lighter orange
+      beige: "#F8F7F5", // Light beige background
       dark: "#000000",
       light: "#FFFFFF",
     },
@@ -28,8 +30,8 @@ const theme = extendTheme({
   styles: {
     global: {
       body: {
-        bg: "#000000",
-        color: "#FFFFFF",
+        bg: "#F8F7F5", // Stacks light beige background
+        color: "#000000",
       },
     },
   },
