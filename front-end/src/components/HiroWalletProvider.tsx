@@ -11,6 +11,7 @@ import {
 } from "react";
 
 import { connect, disconnect, isConnected, getLocalStorage } from "@stacks/connect";
+import { getStacksNetworkString } from "@/lib/stacks-api";
 
 interface HiroWallet {
   isWalletOpen: boolean;
@@ -34,26 +35,49 @@ export default HiroWalletContext;
 interface ProviderProps {
   children: ReactNode | ReactNode[];
 }
+
+
 export const HiroWalletProvider: FC<ProviderProps> = ({ children }) => {
   const [mounted, setMounted] = useState(false);
   const [isWalletConnected, setIsWalletConnected] = useState(false);
+  const [isWalletOpen, setIsWalletOpen] = useState(false);
+  
+  // Use NEXT_PUBLIC_ prefix for client-side environment variables
+  const projectId = process.env.NEXT_PUBLIC_PROJECT_ID || process.env.PROJECT_ID;
+  
   useEffect(() => {
     setMounted(true);
     setIsWalletConnected(isConnected());
-  }, [mounted]);
-  const [isWalletOpen, setIsWalletOpen] = useState(false);
+    
+    // Log for debugging
+    if (projectId) {
+      console.log('Project ID:', projectId);
+    } else {
+      console.warn('PROJECT_ID is not set. WalletConnect may not work properly.');
+    }
+  }, [mounted, projectId]);
 
   const authenticate = useCallback(async () => {
+    if (!projectId) {
+      console.error('PROJECT_ID is not set. Please set NEXT_PUBLIC_PROJECT_ID in your environment variables.');
+      return;
+    }
+    
     try {
       setIsWalletOpen(true);
-      await connect();
+      const network = getStacksNetworkString();
+      await connect({
+        network,
+        walletConnectProjectId: projectId, // Direct param supported in v8.2+
+        forceWalletSelect: true,
+      });
       setIsWalletOpen(false);
       setIsWalletConnected(isConnected());
     } catch (error) {
       console.error('Connection failed:', error);
       setIsWalletOpen(false);
     }
-  }, []);
+  }, [projectId]);
 
   const handleDisconnect = useCallback(() => {
     disconnect();

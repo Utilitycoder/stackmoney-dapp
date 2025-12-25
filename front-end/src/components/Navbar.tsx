@@ -10,12 +10,12 @@ export const Navbar = () => {
   const { currentWallet, wallets, setCurrentWallet } = useDevnetWallet();
 
   return (
-    <Box as="nav" bg="transparent" position="absolute" top={0} left={0} right={0} zIndex={10} w="full">
+    <Box as="nav" bg="white" position="absolute" top={0} left={0} right={0} zIndex={10} w="full" boxShadow="sm">
       <Container maxW="container.xl">
         <Flex justify="space-between" h={20} align="center">
           <Flex align="center">
             <Flex
-              bgGradient="linear(to-r, brand.500, brand.600)"
+              bg="brand.500"
               borderRadius="md"
               letterSpacing="-.05em"
               fontSize="xl"
@@ -30,7 +30,7 @@ export const Navbar = () => {
               SM
             </Flex>
             <Link href="/" textDecoration="none">
-              <Box fontSize="lg" fontWeight="bold" color="white" ml={4}>
+              <Box fontSize="lg" fontWeight="bold" color="black" ml={4}>
                 StackMoney
               </Box>
             </Link>
@@ -39,7 +39,7 @@ export const Navbar = () => {
             <HStack spacing={4} display={{ base: "none", md: "flex" }}>
               <Link
                 href="#"
-                color="gray.400"
+                color="gray.700"
                 _hover={{ color: "brand.500" }}
                 fontSize="sm"
                 fontWeight="medium"
@@ -60,7 +60,7 @@ export const Navbar = () => {
             </Box>
           </HStack>
         </Flex>
-        <Divider borderColor="rgba(85, 70, 255, 0.3)" />
+        <Divider borderColor="rgba(255, 107, 0, 0.2)" />
       </Container>
     </Box>
   );

@@ -33,9 +33,9 @@ const FeatureCard = ({ title, description, illustration }: FeatureCardProps) => 
       position="relative"
       p={8}
       borderRadius="lg"
-      bg="rgba(85, 70, 255, 0.05)"
+      bg="rgba(255, 107, 0, 0.05)"
       border="1px solid"
-      borderColor="rgba(85, 70, 255, 0.2)"
+      borderColor="rgba(255, 107, 0, 0.2)"
       _hover={{
         borderColor: "brand.500",
         transform: "translateY(-4px)",
@@ -44,10 +44,10 @@ const FeatureCard = ({ title, description, illustration }: FeatureCardProps) => 
       transition="all 0.3s"
     >
       <VStack align="start" spacing={4}>
-        <Heading size="lg" color="white">
+        <Heading size="lg" color="black">
           {title}
         </Heading>
-        <Text color="gray.300" lineHeight="tall">
+        <Text color="gray.700" lineHeight="tall">
           {description}
         </Text>
         <HStack>
@@ -66,7 +66,7 @@ const FeatureCard = ({ title, description, illustration }: FeatureCardProps) => 
             <Box
               w="200px"
               h="150px"
-              bg="rgba(85, 70, 255, 0.1)"
+              bg="rgba(255, 107, 0, 0.1)"
               borderRadius="md"
               display="flex"
               alignItems="center"
@@ -117,7 +117,7 @@ const faqData = [
 
 export const LandingPage = () => {
   return (
-    <Box bg="black" minH="100vh" color="white">
+    <Box bg="stacks.beige" minH="100vh" color="black">
       {/* Hero Section */}
       <Box
         position="relative"
@@ -131,7 +131,7 @@ export const LandingPage = () => {
           left: 0,
           right: 0,
           bottom: 0,
-          bgGradient: "radial(circle at center, rgba(85, 70, 255, 0.1) 0%, transparent 70%)",
+          bgGradient: "radial(circle at center, rgba(255, 107, 0, 0.1) 0%, transparent 70%)",
           pointerEvents: "none",
         }}
       >
@@ -144,7 +144,7 @@ export const LandingPage = () => {
               transform="translateX(-50%)"
               fontSize="12rem"
               fontWeight="900"
-              color="rgba(85, 70, 255, 0.05)"
+              color="rgba(255, 107, 0, 0.05)"
               letterSpacing="0.1em"
               userSelect="none"
               pointerEvents="none"
@@ -158,6 +158,7 @@ export const LandingPage = () => {
               lineHeight="1.1"
               zIndex={1}
               position="relative"
+              color="black"
             >
               <Box as="span" display="block">
                 Refining
@@ -172,18 +173,18 @@ export const LandingPage = () => {
                 Bitcoin
               </Box>
             </Heading>
-            <Text fontSize="xl" color="gray.400" maxW="2xl" zIndex={1} position="relative">
+            <Text fontSize="xl" color="gray.700" maxW="2xl" zIndex={1} position="relative">
               Stream, distribute, and fundraise with ease on the Stacks blockchain
             </Text>
             <HStack spacing={4} mt={8} zIndex={1} position="relative">
               <Button
                 size="lg"
-                bgGradient="linear(to-r, brand.500, brand.600)"
+                bg="brand.500"
                 color="white"
                 _hover={{
-                  bgGradient: "linear(to-r, brand.600, brand.700)",
+                  bg: "brand.600",
                   transform: "translateY(-2px)",
-                  boxShadow: "0 10px 25px rgba(85, 70, 255, 0.3)",
+                  boxShadow: "0 10px 25px rgba(255, 107, 0, 0.3)",
                 }}
                 px={8}
                 py={6}
@@ -229,7 +230,7 @@ export const LandingPage = () => {
       <Box py={20} px={4} position="relative">
         <Container maxW="container.lg">
           <VStack spacing={8}>
-            <Heading size="2xl" textAlign="center" mb={8}>
+            <Heading size="2xl" textAlign="center" mb={8} color="black">
               Frequently Asked Questions
             </Heading>
             <Accordion allowToggle w="full" defaultIndex={0}>
@@ -237,21 +238,21 @@ export const LandingPage = () => {
                 <AccordionItem
                   key={index}
                   border="1px solid"
-                  borderColor="rgba(85, 70, 255, 0.2)"
+                  borderColor="rgba(255, 107, 0, 0.2)"
                   borderRadius="md"
                   mb={4}
-                  bg="rgba(85, 70, 255, 0.05)"
+                  bg="rgba(255, 107, 0, 0.05)"
                   _hover={{
                     borderColor: "brand.500",
                   }}
                 >
                   <AccordionButton py={6} px={6}>
-                    <Box flex="1" textAlign="left" fontWeight="semibold">
+                    <Box flex="1" textAlign="left" fontWeight="semibold" color="black">
                       {faq.question}
                     </Box>
                     <AccordionIcon color="brand.500" />
                   </AccordionButton>
-                  <AccordionPanel pb={6} px={6} color="gray.300">
+                  <AccordionPanel pb={6} px={6} color="gray.700">
                     {faq.answer}
                   </AccordionPanel>
                 </AccordionItem>
@@ -262,7 +263,7 @@ export const LandingPage = () => {
       </Box>
 
       {/* Footer */}
-      <Box as="footer" py={12} px={4} borderTop="1px solid" borderColor="rgba(85, 70, 255, 0.2)">
+      <Box as="footer" py={12} px={4} borderTop="1px solid" borderColor="rgba(255, 107, 0, 0.2)">
         <Container maxW="container.xl">
           <Flex
             direction={{ base: "column", md: "row" }}
@@ -274,7 +275,7 @@ export const LandingPage = () => {
               <Link
                 href="https://twitter.com"
                 target="_blank"
-                color="gray.400"
+                color="gray.600"
                 _hover={{ color: "brand.500" }}
               >
                 X
@@ -282,13 +283,13 @@ export const LandingPage = () => {
               <Link
                 href="https://t.me"
                 target="_blank"
-                color="gray.400"
+                color="gray.600"
                 _hover={{ color: "brand.500" }}
               >
                 Telegram
               </Link>
             </HStack>
-            <Text color="gray.500" fontSize="sm">
+            <Text color="gray.600" fontSize="sm">
               © 2025 — Copyright StackMoney
             </Text>
           </Flex>
