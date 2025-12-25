@@ -33,25 +33,43 @@ export const ConnectWalletButton = (buttonProps: ConnectWalletButtonProps) => {
 
   return isWalletConnected ? (
     <Menu>
-      <MenuButton as={Button} size="sm" colorScheme="gray">
+      <MenuButton
+        as={Button}
+        size="md"
+        bgGradient="linear(to-r, brand.500, brand.600)"
+        color="white"
+        _hover={{
+          bgGradient: "linear(to-r, brand.600, brand.700)",
+        }}
+      >
         <Flex gap="2" align="center">
           <Box>Connected:</Box>
           <Box>{formatStxAddress(currentWalletAddress || "")}</Box>
         </Flex>
       </MenuButton>
-      <MenuList>
-        <MenuItem onClick={disconnect}>Disconnect Wallet</MenuItem>
+      <MenuList bg="gray.800" borderColor="rgba(85, 70, 255, 0.2)">
+        <MenuItem onClick={disconnect} bg="transparent" _hover={{ bg: "gray.700" }}>
+          Disconnect Wallet
+        </MenuItem>
       </MenuList>
     </Menu>
   ) : (
     <Button
-      size="sm"
+      size="md"
       onClick={authenticate}
       data-testid="wallet-connect-button"
+      bgGradient="linear(to-r, brand.500, brand.600)"
+      color="white"
+      _hover={{
+        bgGradient: "linear(to-r, brand.600, brand.700)",
+        transform: "translateY(-2px)",
+        boxShadow: "0 10px 25px rgba(85, 70, 255, 0.3)",
+      }}
+      px={6}
       {...buttonProps}
     >
       <Flex gap="2" align="center">
-        {children || "Connect Wallet"}
+        {children || "Launch App"}
       </Flex>
     </Button>
   );
