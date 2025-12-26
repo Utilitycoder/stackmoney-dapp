@@ -2,9 +2,9 @@
 
 import theme from "@/theme";
 import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
-import { DevnetWalletProvider } from "../DevnetWalletProvider";
+import { DevnetWalletProvider } from "./devnet-wallet-provider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { HiroWalletProvider } from "../HiroWalletProvider";
+import { HiroWalletProvider } from "./hiro-wallet-provider";
 
 const queryClient = new QueryClient();
 

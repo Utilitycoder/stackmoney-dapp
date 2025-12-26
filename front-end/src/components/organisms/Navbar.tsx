@@ -3,8 +3,8 @@
 import { Box, Container, Flex, Link, HStack, Divider } from "@chakra-ui/react";
 import { isDevnetEnvironment } from "@/lib/contract-utils";
 import { useDevnetWallet } from "@/lib/devnet-wallet-context";
-import { DevnetWalletButton } from "./DevnetWalletButton";
-import { ConnectWalletButton } from "./ConnectWallet";
+import { DevnetWalletButton } from "@/components/atoms/DevnetWalletButton";
+import { ConnectWalletButton } from "@/components/atoms/ConnectWalletButton";
 
 export const Navbar = () => {
   const { currentWallet, wallets, setCurrentWallet } = useDevnetWallet();

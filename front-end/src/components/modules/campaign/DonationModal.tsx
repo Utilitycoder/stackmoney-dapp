@@ -24,7 +24,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useContext } from "react";
-import HiroWalletContext from "./HiroWalletProvider";
+import HiroWalletContext from "@/providers/hiro-wallet-provider";
 import {
   executeContractCall,
   isDevnetEnvironment,
@@ -32,8 +32,8 @@ import {
   openContractCall,
 } from "@/lib/contract-utils";
 import { useDevnetWallet } from "@/lib/devnet-wallet-context";
-import { ConnectWalletButton } from "./ConnectWallet";
-import { DevnetWalletButton } from "./DevnetWalletButton";
+import { ConnectWalletButton } from "@/components/atoms/ConnectWalletButton";
+import { DevnetWalletButton } from "@/components/atoms/DevnetWalletButton";
 import { getContributeSbtcTx, getContributeStxTx } from "@/lib/campaign-utils";
 import { getStacksNetworkString } from "@/lib/stacks-api";
 import {

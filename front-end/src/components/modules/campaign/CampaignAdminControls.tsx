@@ -27,7 +27,7 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import { useContext, useState } from "react";
-import HiroWalletContext from "./HiroWalletProvider";
+import HiroWalletContext from "@/providers/hiro-wallet-provider";
 import { useDevnetWallet } from "@/lib/devnet-wallet-context";
 import { getStacksNetworkString } from "@/lib/stacks-api";
 

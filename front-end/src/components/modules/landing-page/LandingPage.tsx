@@ -10,14 +10,12 @@ import {
   VStack,
   HStack,
   SimpleGrid,
-  Icon,
   Accordion,
   AccordionItem,
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
   Link,
-  Divider,
 } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 
