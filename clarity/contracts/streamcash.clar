@@ -61,7 +61,7 @@
   (let (
     (stream (unwrap! (map-get? streams stream-id) err-invalid-stream-id))
   )
-    (asserts! (is-eq contract-caller (get sender stream)) err-unauthorized)
+    (asserts! (is-eq contract-caller (get sender stream)) err-unauthorized) 
     (try! (stx-transfer? amount contract-caller (as-contract tx-sender)))
     (map-set streams stream-id 
       (merge stream {balance: (+ (get balance stream) amount)})
