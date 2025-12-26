@@ -22,14 +22,14 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon, InfoIcon } from "@chakra-ui/icons";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useCallback } from "react";
 import { CAMPAIGN_SUBTITLE, CAMPAIGN_TITLE } from "@/constants/campaign";
-import StyledMarkdown from "./StyledMarkdown";
+import StyledMarkdown from "@/components/molecules/StyledMarkdown";
 import { useCampaignInfo, useExistingDonation } from "@/hooks/campaignQueries";
 import { useCurrentBtcBlock } from "@/hooks/chainQueries";
 import { format } from "timeago.js";
 import DonationModal from "./DonationModal";
-import HiroWalletContext from "./HiroWalletProvider";
+import HiroWalletContext from "@/providers/hiro-wallet-provider";
 import { useDevnetWallet } from "@/lib/devnet-wallet-context";
 import {
   isDevnetEnvironment,
@@ -72,11 +72,11 @@ export default function CampaignDetails({
   const campaignIsCancelled =
     !campaignIsUninitialized && campaignInfo?.isCancelled;
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
-  };
+  }, [images.length]);
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
@@ -87,7 +87,7 @@ export default function CampaignDetails({
   useEffect(() => {
     const timer = setInterval(nextSlide, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [nextSlide]);
 
   const progress = campaignInfo
     ? (campaignInfo.usdValue / campaignInfo.goal) * 100

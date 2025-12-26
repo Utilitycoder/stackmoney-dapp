@@ -10,7 +10,7 @@ import {
   MenuList,
 } from "@chakra-ui/react";
 import { useContext } from "react";
-import HiroWalletContext from "./HiroWalletProvider";
+import HiroWalletContext from "@/providers/hiro-wallet-provider";
 import { formatStxAddress } from "@/lib/address-utils";
 
 interface ConnectWalletButtonProps extends ButtonProps {
