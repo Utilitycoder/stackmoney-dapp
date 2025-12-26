@@ -38,6 +38,15 @@ export const Navbar = () => {
           <HStack spacing={6} align="center">
             <HStack spacing={4} display={{ base: "none", md: "flex" }}>
               <Link
+                href="/dashboard"
+                color="gray.700"
+                _hover={{ color: "brand.500" }}
+                fontSize="sm"
+                fontWeight="medium"
+              >
+                Dashboard
+              </Link>
+              <Link
                 href="#"
                 color="gray.700"
                 _hover={{ color: "brand.500" }}
