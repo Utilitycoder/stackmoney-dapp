@@ -27,31 +27,55 @@ const FeatureCard = ({
   return (
     <Box
       p={6}
-      bg="rgba(255, 107, 0, 0.05)"
+      bg="white"
       border="1px solid"
       borderColor="rgba(255, 107, 0, 0.2)"
-      borderRadius="lg"
+      borderRadius="xl"
+      boxShadow="sm"
       position="relative"
       overflow="hidden"
-      minH="280px"
+      minH="240px"
       display="flex"
       flexDirection="column"
       _hover={{
         borderColor: "brand.500",
+        boxShadow: "md",
         transform: "translateY(-4px)",
-        transition: "all 0.3s",
+        transition: "all 0.2s ease",
       }}
+      transition="all 0.2s ease"
     >
-      <Flex direction="column" gap={4} flex={1}>
+      {/* Subtle gradient overlay */}
+      <Box
+        position="absolute"
+        top={0}
+        right={0}
+        w="120px"
+        h="120px"
+        bgGradient="radial(circle, rgba(255, 107, 0, 0.08) 0%, transparent 70%)"
+        borderRadius="full"
+        transform="translate(30%, -30%)"
+        pointerEvents="none"
+      />
+
+      <Flex direction="column" gap={4} flex={1} position="relative" zIndex={1}>
         <Flex justify="space-between" align="start">
-          <Heading size="lg" color="white" fontWeight="semibold">
+          <Heading
+            size="lg"
+            color="black"
+            fontWeight="semibold"
+            fontSize="xl"
+            letterSpacing="-0.01em"
+          >
             {title}
           </Heading>
-          <Text fontSize="2xl">{getIcon()}</Text>
+          <Text fontSize="3xl" opacity={0.7}>
+            {getIcon()}
+          </Text>
         </Flex>
 
         <Text
-          color="gray.300"
+          color="gray.600"
           fontSize="sm"
           lineHeight="tall"
           flex={1}
@@ -66,13 +90,17 @@ const FeatureCard = ({
           color="brand.500"
           fontWeight="semibold"
           fontSize="sm"
-          _hover={{ color: "brand.400", textDecoration: "underline" }}
+          _hover={{ color: "brand.600" }}
           display="flex"
           alignItems="center"
           gap={2}
+          mt="auto"
+          transition="color 0.2s"
         >
           {linkText}
-          <Text>→</Text>
+          <Text fontSize="lg" transform="translateX(0)" transition="transform 0.2s">
+            →
+          </Text>
         </Link>
       </Flex>
     </Box>
@@ -80,4 +108,3 @@ const FeatureCard = ({
 };
 
 export default FeatureCard;
-
