@@ -5,7 +5,7 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/organisms/AppSidebar";
 import { SidebarToggle } from "@/components/organisms/SidebarToggle";
 
-export default function DashboardLayout({
+export default function OverviewLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -26,4 +26,3 @@ export default function DashboardLayout({
     </SidebarProvider>
   );
 }
-
