@@ -7,8 +7,6 @@ import {
   SidebarContent,
   SidebarHeader,
   SidebarMenu,
-  SidebarMenuItem,
-  SidebarMenuButton,
   useSidebar,
 } from "@/components/ui/sidebar";
 import {
@@ -16,9 +14,7 @@ import {
   Flex,
   Text,
   HStack,
-  VStack,
   Icon,
-  useBreakpointValue,
 } from "@chakra-ui/react";
 import { useContext } from "react";
 import HiroWalletContext from "@/providers/hiro-wallet-provider";

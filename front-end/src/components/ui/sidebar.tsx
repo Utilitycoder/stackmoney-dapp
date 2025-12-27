@@ -1,6 +1,7 @@
 "use client";
 
-import { createContext, useContext, useState, useCallback, ReactNode } from "react";
+import { createContext, useContext, ReactNode } from "react";
+import NextLink from "next/link";
 import {
   Box,
   Drawer,
@@ -12,9 +13,8 @@ import {
   HStack,
   Text,
   IconButton,
-  Flex,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { HamburgerIcon } from "@chakra-ui/icons";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 interface SidebarContextType {
@@ -182,7 +182,6 @@ export function SidebarMenuButton({
 
   if (href) {
     // Use NextLink for client-side navigation
-    const NextLink = require("next/link").default;
     return (
       <Box as={NextLink} href={href} onClick={handleClick} display="block">
         {content}
