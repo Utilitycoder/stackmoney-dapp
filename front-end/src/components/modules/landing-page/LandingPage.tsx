@@ -18,6 +18,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
+import NextLink from "next/link";
 
 interface FeatureCardProps {
   title: string;
@@ -176,6 +177,8 @@ export const LandingPage = () => {
             </Text>
             <HStack spacing={4} mt={8} zIndex={1} position="relative">
               <Button
+                as={NextLink}
+                href="/dashboard"
                 size="lg"
                 bg="brand.500"
                 color="white"
