@@ -73,7 +73,20 @@ export const HiroWalletProvider: FC<ProviderProps> = ({ children }) => {
     
     try {
       setIsWalletOpen(true);
-      await connect();
+      
+      // According to @stacks/connect docs: https://docs.stacks.co/reference/stacks.js/stacks-connect
+      // connect() accepts optional ConnectOptions with forceWalletSelect and approvedProviderIds
+      // walletConnectProjectId is needed for WalletConnect to appear in the modal
+      const connectOptions: any = {
+        forceWalletSelect: true,
+      };
+      
+      // Add walletConnectProjectId if available - required for WalletConnect to show in modal
+      if (projectId && projectId.trim()) {
+        connectOptions.walletConnectProjectId = projectId.trim();
+      }
+      
+      await connect(connectOptions);
       setIsWalletOpen(false);
       setIsWalletConnected(isConnected());
     } catch (error) {
