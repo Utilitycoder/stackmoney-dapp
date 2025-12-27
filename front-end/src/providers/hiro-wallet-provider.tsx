@@ -63,19 +63,24 @@ export const HiroWalletProvider: FC<ProviderProps> = ({ children }) => {
       return;
     }
     
+    const networkString = getStacksNetworkString();
+    
+    // WalletConnect doesn't support devnet, only mainnet and testnet
+    if (networkString === "devnet") {
+      console.warn('WalletConnect does not support devnet. Please use testnet or mainnet.');
+      return;
+    }
+    
     try {
       setIsWalletOpen(true);
-      const network = getStacksNetworkString();
-      await connect({
-        network,
-        walletConnectProjectId: projectId, // Direct param supported in v8.2+
-        forceWalletSelect: true,
-      });
+      await connect();
       setIsWalletOpen(false);
       setIsWalletConnected(isConnected());
     } catch (error) {
       console.error('Connection failed:', error);
       setIsWalletOpen(false);
+      // Re-throw to allow caller to handle
+      throw error;
     }
   }, [projectId]);
 
