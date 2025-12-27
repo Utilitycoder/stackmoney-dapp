@@ -10,6 +10,7 @@ import {
   MenuList,
 } from "@chakra-ui/react";
 import { useContext } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import HiroWalletContext from "@/providers/hiro-wallet-provider";
 import { formatStxAddress } from "@/lib/address-utils";
 
@@ -19,6 +20,9 @@ interface ConnectWalletButtonProps extends ButtonProps {
 
 export const ConnectWalletButton = (buttonProps: ConnectWalletButtonProps) => {
   const { children } = buttonProps;
+  const pathname = usePathname();
+  const router = useRouter();
+  const isLandingPage = pathname === "/";
   const {
     authenticate,
     isWalletConnected,
@@ -30,6 +34,22 @@ export const ConnectWalletButton = (buttonProps: ConnectWalletButtonProps) => {
     process.env.NEXT_PUBLIC_STACKS_NETWORK === "testnet"
       ? testnetAddress
       : mainnetAddress;
+
+  const handleConnectAndNavigate = async () => {
+    try {
+      if (isLandingPage) {
+        // On landing page: redirect to dashboard only
+        router.push("/dashboard");
+      } else {
+        // On other pages: trigger wallet connection if not connected
+        if (!isWalletConnected) {
+          authenticate();
+        }
+      }
+    } catch (error) {
+      console.error("Wallet connection error:", error);
+    }
+  };
 
   return isWalletConnected ? (
     <Menu>
@@ -56,7 +76,7 @@ export const ConnectWalletButton = (buttonProps: ConnectWalletButtonProps) => {
   ) : (
     <Button
       size="md"
-      onClick={authenticate}
+      onClick={handleConnectAndNavigate}
       data-testid="wallet-connect-button"
       bg="brand.500"
       color="white"
@@ -69,7 +89,7 @@ export const ConnectWalletButton = (buttonProps: ConnectWalletButtonProps) => {
       {...buttonProps}
     >
       <Flex gap="2" align="center">
-        {children || "Launch App"}
+        {children || (isLandingPage ? "Launch App" : "Sign In")}
       </Flex>
     </Button>
   );
